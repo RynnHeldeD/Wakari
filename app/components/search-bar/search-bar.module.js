@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('wakari-app', [
-			'search-bar'
+		.module('search-bar', [
+			
 		]);
 })();
