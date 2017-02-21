@@ -8,9 +8,19 @@
 			controller: SearchBarController
 		});
 	
-	SearchBarController.$inject = [];
+	SearchBarController.$inject = ['WordService'];
 
-	function SearchBarController() {
-		
+	function SearchBarController(WordService) {
+		var self = this;
+		this.searchResult = null;
+		this.userSearch = "";
+
+		WordService.searchByKeyword().then(function(response) {
+			self.searchResult = response.data;
+		});
+
+		this.search = function() {
+			console.log('you searched for : "' + self.userSearch + '"');
+		}
 	}
 })();

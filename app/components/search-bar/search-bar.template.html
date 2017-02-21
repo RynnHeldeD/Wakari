@@ -1,1 +1,28 @@
-<input type="text">
+<input type="text" ng-model="$ctrl.userSearch">
+<button ng-click="$ctrl.search()">Search</button>
+<div class="results" ng-if="$ctrl.searchResult">
+	<h2>You searched for : {{$ctrl.searchResult.keyword}}</h2>
+	<h3>Meilleur résultat : {{$ctrl.searchResult.word.meaning}}</h3>
+	<h4>Kanji : {{$ctrl.searchResult.word.kanji}} | Kana : {{$ctrl.searchResult.word.kana}} | Romaji : {{$ctrl.searchResult.word.romaji}}</h4>
+	<p>Notes :</p>
+	<textarea cols="70" rows="5">{{$ctrl.searchResult.word.notes}}</textarea>
+	<p>Catégories : <span ng-repeat="category in $ctrl.searchResult.word.categories track by $index">{{category + ($index < $ctrl.searchResult.word.categories.length - 1 && ", " || "")}}</span></p>
+</div>
+
+<hr>
+
+<div>
+	<h2>{{$ctrl.searchResult.categoryWords.category}}</h2>
+	<ul>
+		<li ng-repeat="word in $ctrl.searchResult.categoryWords.words">{{word.meaning}} - Kanji: {{word.kanji}} - Kana : {{word.kana}} - Romaji : {{word.romaji}}</li>
+	</ul>
+</div>
+
+<hr>
+
+<div ng-repeat="category in $ctrl.searchResult.similarWords">
+	<h2>{{category.category}}</h2>
+	<ul>
+		<li ng-repeat="word in category.words">{{word.meaning}} - Kanji: {{word.kanji}} - Kana : {{word.kana}} - Romaji : {{word.romaji}}</li>
+	</ul>
+</div>

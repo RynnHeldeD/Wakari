@@ -1,0 +1,64 @@
+{
+	"keyword": "maison",
+	"word": {
+		"id": 1,
+		"kanji": "家",
+		"kana": "いえ",
+		"romaji": "",
+		"meaning": "maison",
+		"notes": "Uniquement le terme pour 'Maison', 'Appartement' se dit autrement.",
+		"categories": [
+			"maison",
+			"habitation"
+		]
+	},
+	"categoryWords": {
+		"category": "maison",
+		"words" : [
+			{
+				"id": 2,
+				"kanji": "家",
+				"kana": "いえ",
+				"romaji": "ofuro",
+				"meaning": "baignoire",
+				"notes": "",
+				"categories": [
+					"maison",
+					"salle de bain"
+				]
+			},
+			{
+				"id": 3,
+				"kanji": "家",
+				"kana": "いえ",
+				"romaji": "suponji",
+				"meaning": "éponge",
+				"notes": "",
+				"categories": [
+					"maison",
+					"cuisine",
+					"vaisselle"
+				]
+			}
+		]
+	},
+	"similarWords": [
+		{
+			"category": "habitation",
+			"words": [
+				{
+					"id": 4,
+					"kanji": "家",
+					"kana": "いえ",
+					"romaji": "",
+					"meaning": "ville",
+					"notes": "",
+					"categories": [
+						"habitation",
+						"géographie"
+					]
+				}
+			]
+		}
+	]
+}

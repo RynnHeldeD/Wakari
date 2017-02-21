@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"kanji": "足",
+		"kana": "あし",
+		"romaji": "",
+		"meaning": "jambe",
+		"note": ""
+	},
+	{
+		"id": 2,
+		"kanji": "足",
+		"kana": "あし",
+		"romaji": "",
+		"meaning": "pied",
+		"note": ""
+	},
+	{
+		"id": 3,
+		"kanji": "遊び",
+		"kana": "あそび",
+		"romaji": "",
+		"meaning": "jeu",
+		"note": ""
+	}
+]
