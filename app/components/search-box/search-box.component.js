@@ -2,15 +2,15 @@
 	'use strict';
 	
 	angular
-		.module('search-bar')
-		.component('searchBar', {
-			templateUrl: 'app/components/search-bar/search-bar.template.html',
-			controller: SearchBarController
+		.module('search-box')
+		.component('searchBox', {
+			templateUrl: 'app/components/search-box/search-box.template.html',
+			controller: SearchBoxController
 		});
 	
-	SearchBarController.$inject = ['WordService'];
+	SearchBoxController.$inject = ['WordService'];
 
-	function SearchBarController(WordService) {
+	function SearchBoxController(WordService) {
 		var self = this;
 		this.searchResult = null;
 		this.userSearch = "";

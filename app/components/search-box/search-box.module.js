@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('search-bar', [
+		.module('search-box', [
 			
 		]);
 })();

@@ -3,6 +3,8 @@
 	
 	angular
 		.module('wakari-app', [
-			'search-bar'
+			'ui.router',
+			'search-box',
+			'word-detail'
 		]);
 })();
