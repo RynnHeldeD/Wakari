@@ -1,0 +1,8 @@
+<button ng-click="$ctrl.create()">Create</button>
+<button ng-click="$ctrl.save()">Save</button>
+<button ng-click="$ctrl.delete()">Delete</button>
+<h1>Word : {{$ctrl.word.meaning}}</h1>
+<h4>Kanji : {{$ctrl.word.kanji}} | Kana : {{$ctrl.word.kana}} | Romaji : {{$ctrl.word.romaji}}</h4>
+<p>Notes :</p>
+<textarea cols="70" rows="5">{{$ctrl.word.notes}}</textarea>
+<p>Catégories : <span ng-repeat="category in $ctrl.word.categories track by $index">{{category + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</span></p>

@@ -26,3 +26,10 @@
 		<li ng-repeat="word in category.words">{{word.meaning}} - Kanji: {{word.kanji}} - Kana : {{word.kana}} - Romaji : {{word.romaji}}</li>
 	</ul>
 </div>
+
+<div>
+	<h1>Recent searches</h1>
+	<ul>
+		<li ng-repeat="recentWord in $ctrl.recentSearches"><a ui-sref="word-detail({wordId: recentWord.id})">{{recentWord.meaning}}</a></li>
+	</ul>
+</div>

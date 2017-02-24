@@ -14,10 +14,23 @@
 		var self = this;
 		this.searchResult = null;
 		this.userSearch = "";
+		this.recentSearches = [];
 
-		WordService.searchByKeyword().then(function(response) {
-			self.searchResult = response.data;
-		});
+		this.$onInit = function() {
+			var startId = 14;
+			var endId = 20;
+
+			for (var wordId = startId; wordId <= endId; wordId++) {
+				WordService.get(wordId).then(function (response) {
+					self.recentSearches.push(response.data);
+				});
+			}
+
+			WordService.searchByKeyword().then(function(response) {
+				self.searchResult = response.data;
+			});
+		};
+
 
 		this.search = function() {
 			console.log('you searched for : "' + self.userSearch + '"');
