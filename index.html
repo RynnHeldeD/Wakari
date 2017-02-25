@@ -3,10 +3,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Document</title>
+		<link rel="stylesheet" href="dist/assets/lib.css">
+		<link rel="stylesheet" href="dist/assets/app.css">
 	</head>
 	<body ng-app="wakari-app">
-		<h1>Wakari !</h1>
-		<ui-view></ui-view>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2 flex md-truncate><a ui-sref="index()">Wakari</a></h2>
+				<md-button class="md-icon-button" aria-label="Settings">
+					<md-icon md-svg-src="dist/assets/icons/navigation/more_vert.svg"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-content layout="column" layout-padding>
+			<ui-view flex></ui-view>
+		</md-content>
 		<script src="dist/app/lib.js"></script>
 		<script src="dist/app/app.js"></script>
 	</body>

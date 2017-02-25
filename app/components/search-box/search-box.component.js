@@ -27,7 +27,7 @@
 			}
 
 			WordService.searchByKeyword().then(function(response) {
-				self.searchResult = response.data;
+				// self.searchResult = response.data;
 			});
 		};
 

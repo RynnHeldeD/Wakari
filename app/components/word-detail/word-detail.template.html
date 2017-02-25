@@ -1,8 +1,42 @@
-<button ng-click="$ctrl.create()">Create</button>
-<button ng-click="$ctrl.save()">Save</button>
-<button ng-click="$ctrl.delete()">Delete</button>
-<h1>Word : {{$ctrl.word.meaning}}</h1>
-<h4>Kanji : {{$ctrl.word.kanji}} | Kana : {{$ctrl.word.kana}} | Romaji : {{$ctrl.word.romaji}}</h4>
-<p>Notes :</p>
-<textarea cols="70" rows="5">{{$ctrl.word.notes}}</textarea>
-<p>Catégories : <span ng-repeat="category in $ctrl.word.categories track by $index">{{category + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</span></p>
+<md-card>
+	<md-card-title>
+		<md-card-title-text>
+			<span class="md-headline">{{$ctrl.word.meaning | capitalize}}</span>
+		</md-card-title-text>
+	</md-card-title>
+	<md-card-content>
+		<div layout="row" layout-padding>
+			<div flex>
+				<div layout="column" layout-align="center center">
+					<span flex>Romaji</span>
+					<h2 flex>{{$ctrl.word.romaji}}</h2>
+				</div>
+			</div>
+			<div flex>
+				<div layout="column" layout-align="center center">
+					<span flex>Kanji</span>
+					<h2 flex>{{$ctrl.word.kanji}}</h2>
+				</div>
+			</div>
+			<div flex>
+				<div layout="column" layout-align="center center">
+					<span flex>Kana</span>
+					<h2 flex>{{$ctrl.word.kana}}</h2>
+				</div>
+			</div>
+		</div>
+		<div layout="column" layout-padding>
+			<div flex>
+				<span>Note</span>
+				<p>{{$ctrl.word.notes}}</p>
+			</div>
+			<div flex ng-if="$ctrl.word.categories.length != 0">
+				<p>Categories : <a href="#" ng-repeat="category in $ctrl.word.categories track by $index">{{category.name + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</a></p>
+			</div>
+		</div>
+	</md-card-content>
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button ng-click="$ctrl.startEdit()">Edit</md-button>
+		<md-button ng-click="$ctrl.delete()">Delete</md-button>
+	</md-card-actions>
+</md-card>
