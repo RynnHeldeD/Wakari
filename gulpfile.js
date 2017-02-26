@@ -121,9 +121,9 @@ gulp.task('clean-less-app', function() {
 // BUILD
 ///////////////////////////////////////
 gulp.task('default', ['clean-script-app', 'clean-less-app'], function() {
-	gulp.start('script-app', 'less-app', 'icons');
+	gulp.start('script-app', 'less-app');
 });
 
 gulp.task('build', ['clean-script-lib', 'clean-script-app', 'clean-less-lib', 'clean-less-app'], function() {
-	gulp.start('script-lib', 'script-app', 'less-lib', 'less-app');
+	gulp.start('script-lib', 'script-app', 'less-lib', 'less-app', 'icons');
 });
