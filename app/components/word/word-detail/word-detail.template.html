@@ -1,4 +1,4 @@
-<md-card>
+<md-card ng-if="!$ctrl.editing">
 	<md-card-title>
 		<md-card-title-text>
 			<span class="md-headline">{{$ctrl.word.meaning | capitalize}}</span>
@@ -27,16 +27,67 @@
 		</div>
 		<div layout="column" layout-padding>
 			<div flex>
-				<span>Note</span>
+				<h2>Note</h2>
 				<p>{{$ctrl.word.notes}}</p>
 			</div>
 			<div flex ng-if="$ctrl.word.categories.length != 0">
-				<p>Thèmes : <a ui-sref="theme-detail({themeId: category.id})" ng-repeat="category in $ctrl.word.categories track by $index">{{category.name + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</a></p>
+				<h2>Thèmes : </h2><span><a ui-sref="theme-detail({themeId: category.id})" ng-repeat="category in $ctrl.word.categories track by $index">{{category.name + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</a><span>
 			</div>
 		</div>
 	</md-card-content>
 	<md-card-actions layout="row" layout-align="end center">
-		<md-button ng-click="$ctrl.startEdit()">Edit</md-button>
+		<md-button ng-click="$ctrl.edit()">Edit</md-button>
 		<md-button ng-click="$ctrl.delete()">Delete</md-button>
+	</md-card-actions>
+</md-card>
+
+<md-card ng-if="$ctrl.editing">
+	<md-card-title>
+		<md-card-title-text>
+			<input class="md-headline" ng-model="$ctrl.tempWord.meaning">
+		</md-card-title-text>
+	</md-card-title>
+	<md-card-content>
+		<div layout="row" layout-padding>
+			<div flex>
+				<div layout="column" layout-align="center center">
+					<span flex>Romaji</span>
+					<input flex ng-model="$ctrl.tempWord.romaji">
+				</div>
+			</div>
+			<div flex>
+				<div layout="column" layout-align="center center">
+					<span flex>Kana</span>
+					<input flex ng-model="$ctrl.tempWord.kana">
+				</div>
+			</div>
+			<div flex>
+				<div layout="column" layout-align="center center">
+					<span flex>Kanji</span>
+					<input flex ng-model="$ctrl.tempWord.kanji">
+				</div>
+			</div>
+		</div>
+		<div layout="column" layout-padding>
+			<div flex>
+				<h2>Note</h2>
+				<textarea cols="80" rows="10" ng-model="$ctrl.tempWord.notes"></textarea>
+			</div>
+			<div flex>
+				<h2>Thèmes</h2>
+				<md-chips ng-model="$ctrl.tempWord.categories"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true">
+					<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" placeholder="Search for a theme">
+						<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
+					</md-autocomplete>
+					<md-chip-template>
+						<span><a ui-sref="theme-detail({themeId: category.id})">{{$chip.name}}</a></span>
+					</md-chip-template>
+				</md-chips>
+			</div>
+		</div>
+	</md-card-content>
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button ng-click="$ctrl.save()">Save</md-button>
+		<md-button ng-click="$ctrl.cancelEdit()">Cancel</md-button>
 	</md-card-actions>
 </md-card>

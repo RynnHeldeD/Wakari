@@ -15,6 +15,7 @@
 			create: create,
 			save: save,
 			remove: remove,
+			getAll: getAll,
 			getWords: getWords
 		};
 
@@ -32,6 +33,10 @@
 
 		function remove(id) {
 			return $http.delete(endpoint + '/' + id);
+		}
+
+		function getAll() {
+			return $http.get(endpoint);
 		}
 
 		function getWords(theme) {
