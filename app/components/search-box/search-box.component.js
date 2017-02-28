@@ -8,9 +8,9 @@
 			controller: SearchBoxController
 		});
 	
-	SearchBoxController.$inject = ['WordService'];
+	SearchBoxController.$inject = ['WordService', '$state'];
 
-	function SearchBoxController(WordService) {
+	function SearchBoxController(WordService, $state) {
 		var self = this;
 		this.searchResult = null;
 		this.userSearch = "";
@@ -34,6 +34,10 @@
 
 		this.search = function() {
 			console.log('you searched for : "' + self.userSearch + '"');
+		}
+
+		this.goToWordDetails = function(wordId) {
+			$state.go('word-detail', {wordId: wordId});
 		}
 	}
 })();

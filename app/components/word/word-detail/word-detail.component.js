@@ -11,9 +11,9 @@
 			}
 		});
 
-	WordDetailController.$inject = ['WordService', 'ThemeService'];
+	WordDetailController.$inject = ['WordService', 'ThemeService', '$state'];
 
-	function WordDetailController(WordService, ThemeService) {
+	function WordDetailController(WordService, ThemeService, $state) {
 		var self = this;
 
 		this.editing = false;
@@ -50,6 +50,12 @@
 		// 	WordService.save(self.test);
 		// };
 
+		this.goToThemeDetails = function(themeId) {
+			$state.go('theme-detail', {
+				themeId: themeId
+			});
+		};
+
 		this.delete = function() {
 			WordService.remove(750);
 		};
@@ -57,12 +63,12 @@
 		this.edit = function() {
 			this.editing = true;
 			this.tempWord = angular.copy(this.word);
-		}
+		};
 
 		this.cancelEdit = function() {
 			this.editing = false;
 			this.searchText = null;
-		}
+		};
 
 		this.save = function() {
 			self.word = angular.copy(self.tempWord);
@@ -72,7 +78,7 @@
 					self.editing = false;
 					self.tempWord = null;
 				});
-		}
+		};
 
 		this.createChip = function(chip) {
 			if (angular.isObject(chip)) {
@@ -83,12 +89,12 @@
 				name: chip,
 				type: 'new'
 			};
-		}
+		};
 
 		this.searchTheme = function(query) {
 			var results = query ? self.themes.filter(themeFilter(query)) : [];
 			return results;
-		}
+		};
 
 		function themeFilter(query) {
 			var lowercaseQuery = angular.lowercase(query);
@@ -96,6 +102,6 @@
 			return function(theme) {
 				return angular.lowercase(theme.name).indexOf(lowercaseQuery) === 0;
 			}
-		}
+		};
 	}
 })();

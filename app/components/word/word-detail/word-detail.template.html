@@ -1,93 +1,123 @@
-<md-card ng-if="!$ctrl.editing">
-	<md-card-title>
-		<md-card-title-text>
-			<span class="md-headline">{{$ctrl.word.meaning | capitalize}}</span>
-		</md-card-title-text>
-	</md-card-title>
-	<md-card-content>
-		<div layout="row" layout-padding>
-			<div flex>
-				<div layout="column" layout-align="center center">
-					<span flex>Romaji</span>
-					<h2 flex>{{$ctrl.word.romaji}}</h2>
-				</div>
-			</div>
-			<div flex>
-				<div layout="column" layout-align="center center">
-					<span flex>Kana</span>
-					<h2 flex>{{$ctrl.word.kana}}</h2>
-				</div>
-			</div>
-			<div flex>
-				<div layout="column" layout-align="center center">
-					<span flex>Kanji</span>
-					<h2 flex>{{$ctrl.word.kanji}}</h2>
-				</div>
-			</div>
+<md-list ng-if="!$ctrl.editing">
+	<md-subheader>Traductions</md-subheader>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/fr.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<h3>Français</h3>
+			<p>{{$ctrl.word.meaning | capitalize}}</p>
 		</div>
-		<div layout="column" layout-padding>
-			<div flex>
-				<h2>Note</h2>
-				<p>{{$ctrl.word.notes}}</p>
-			</div>
-			<div flex ng-if="$ctrl.word.categories.length != 0">
-				<h2>Thèmes : </h2><span><a ui-sref="theme-detail({themeId: category.id})" ng-repeat="category in $ctrl.word.categories track by $index">{{category.name + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</a><span>
-			</div>
+	</md-list-item>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<h3>Romaji</h3>
+			<p>{{$ctrl.word.romaji}}</p>
 		</div>
-	</md-card-content>
-	<md-card-actions layout="row" layout-align="end center">
-		<md-button ng-click="$ctrl.edit()">Edit</md-button>
-		<md-button ng-click="$ctrl.delete()">Delete</md-button>
-	</md-card-actions>
-</md-card>
+	</md-list-item>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<h3>Kana</h3>
+			<p>{{$ctrl.word.kana}}</p>
+		</div>
+	</md-list-item>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<h3>Kanji</h3>
+			<p>{{$ctrl.word.kanji}}</p>
+		</div>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-subheader>Informations</md-subheader>
+	<md-list-item class="md-2-line md-long-text">
+		<md-icon md-svg-src="dist/assets/icons/av/note.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<h3>Notes</h3>
+			<p>{{$ctrl.word.notes}}</p>
+		</div>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-subheader>Thèmes</md-subheader>
+	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetails(theme.id)" ng-repeat="theme in $ctrl.word.categories">
+		<div class="md-list-item-text md-offset" layout="column">
+			<h3>{{theme.name}}</h3>
+		</div>
+	</md-list-item>
+</md-list>
 
-<md-card ng-if="$ctrl.editing">
-	<md-card-title>
-		<md-card-title-text>
-			<input class="md-headline" ng-model="$ctrl.tempWord.meaning">
-		</md-card-title-text>
-	</md-card-title>
-	<md-card-content>
-		<div layout="row" layout-padding>
-			<div flex>
-				<div layout="column" layout-align="center center">
-					<span flex>Romaji</span>
-					<input flex ng-model="$ctrl.tempWord.romaji">
-				</div>
-			</div>
-			<div flex>
-				<div layout="column" layout-align="center center">
-					<span flex>Kana</span>
-					<input flex ng-model="$ctrl.tempWord.kana">
-				</div>
-			</div>
-			<div flex>
-				<div layout="column" layout-align="center center">
-					<span flex>Kanji</span>
-					<input flex ng-model="$ctrl.tempWord.kanji">
-				</div>
-			</div>
+<md-list ng-if="$ctrl.editing">
+	<md-subheader>Traductions</md-subheader>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/fr.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<md-input-container>
+				<label>Français</label>
+				<input ng-model="$ctrl.tempWord.meaning">
+			</md-input-container>
 		</div>
-		<div layout="column" layout-padding>
-			<div flex>
-				<h2>Note</h2>
-				<textarea cols="80" rows="10" ng-model="$ctrl.tempWord.notes"></textarea>
-			</div>
-			<div flex>
-				<h2>Thèmes</h2>
-				<md-chips ng-model="$ctrl.tempWord.categories"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true">
-					<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" placeholder="Search for a theme">
-						<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
-					</md-autocomplete>
-					<md-chip-template>
-						<span><a ui-sref="theme-detail({themeId: category.id})">{{$chip.name}}</a></span>
-					</md-chip-template>
-				</md-chips>
-			</div>
+	</md-list-item>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<md-input-container>
+				<label>Romaji</label>
+				<input ng-model="$ctrl.tempWord.romaji">
+			</md-input-container>
 		</div>
-	</md-card-content>
-	<md-card-actions layout="row" layout-align="end center">
-		<md-button ng-click="$ctrl.save()">Save</md-button>
-		<md-button ng-click="$ctrl.cancelEdit()">Cancel</md-button>
-	</md-card-actions>
-</md-card>
+	</md-list-item>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<md-input-container>
+				<label>Kana</label>
+				<input ng-model="$ctrl.tempWord.kana">
+			</md-input-container>
+		</div>
+	</md-list-item>
+	<md-list-item class="md-2-line">
+		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<md-input-container>
+				<label>Kanji</label>
+				<input ng-model="$ctrl.tempWord.kanji">
+			</md-input-container>
+		</div>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-subheader>Informations</md-subheader>
+	<md-list-item class="md-2-line md-long-text">
+		<md-icon md-svg-src="dist/assets/icons/av/note.svg"></md-icon>
+		<div class="md-list-item-text" layout="column">
+			<md-input-container>
+				<label>Notes</label>
+				<textarea ng-model="$ctrl.tempWord.notes"></textarea>
+			</md-input-container>
+		</div>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-subheader>Thèmes</md-subheader>
+	<md-list-item class="md-2-line">
+		<div class="md-list-item-text md-offset" layout="column">
+			<md-chips ng-model="$ctrl.tempWord.categories"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
+				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" placeholder="Search for a theme">
+					<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
+				</md-autocomplete>
+				<md-chip-template>
+					<span><a ui-sref="theme-detail({themeId: category.id})">{{$chip.name}}</a></span>
+				</md-chip-template>
+			</md-chips>
+		</div>
+	</md-list-item>
+</md-list>
+
+<md-button class="md-fab btn-edit" aria-label="Edit word" ng-if="!$ctrl.editing" ng-click="$ctrl.edit()">
+	<md-icon md-svg-src="dist/assets/icons/editor/mode_edit.svg"></md-icon>
+</md-button>
+
+<md-button class="md-fab md-primary btn-cancel" aria-label="Cancel editing" ng-if="$ctrl.editing" ng-click="$ctrl.cancelEdit()">
+	<md-icon md-svg-src="dist/assets/icons/content/clear.svg"></md-icon>
+</md-button>
+<md-button class="md-fab btn-save" aria-label="Save changes" ng-if="$ctrl.editing" ng-click="$ctrl.save()">
+	<md-icon md-svg-src="dist/assets/icons/navigation/check.svg"></md-icon>
+</md-button>
