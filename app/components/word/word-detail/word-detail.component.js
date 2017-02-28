@@ -2,9 +2,9 @@
 	'use strict';
 	
 	angular
-		.module('word-detail')
+		.module('wakari-app-word')
 		.component('wordDetail', {
-			templateUrl: 'app/components/word-detail/word-detail.template.html',
+			templateUrl: 'app/components/word/word-detail/word-detail.template.html',
 			controller: WordDetailController,
 			bindings: {
 				wordData: '<'

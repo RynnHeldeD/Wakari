@@ -14,14 +14,14 @@
 			</div>
 			<div flex>
 				<div layout="column" layout-align="center center">
-					<span flex>Kanji</span>
-					<h2 flex>{{$ctrl.word.kanji}}</h2>
+					<span flex>Kana</span>
+					<h2 flex>{{$ctrl.word.kana}}</h2>
 				</div>
 			</div>
 			<div flex>
 				<div layout="column" layout-align="center center">
-					<span flex>Kana</span>
-					<h2 flex>{{$ctrl.word.kana}}</h2>
+					<span flex>Kanji</span>
+					<h2 flex>{{$ctrl.word.kanji}}</h2>
 				</div>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 				<p>{{$ctrl.word.notes}}</p>
 			</div>
 			<div flex ng-if="$ctrl.word.categories.length != 0">
-				<p>Categories : <a href="#" ng-repeat="category in $ctrl.word.categories track by $index">{{category.name + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</a></p>
+				<p>Thèmes : <a ui-sref="theme-detail({themeId: category.id})" ng-repeat="category in $ctrl.word.categories track by $index">{{category.name + ($index < $ctrl.word.categories.length - 1 && ", " || "")}}</a></p>
 			</div>
 		</div>
 	</md-card-content>

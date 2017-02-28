@@ -6,6 +6,7 @@
 			'ngMaterial',
 			'ui.router',
 			'search-box',
-			'word-detail'
+			'wakari-app-word',
+			'wakari-app-theme'
 		]);
 })();

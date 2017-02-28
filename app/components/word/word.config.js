@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular
-		.module('word-detail')
+		.module('wakari-app-word')
 		.config(config);
 	
 	config.$inject = ['$stateProvider'];
