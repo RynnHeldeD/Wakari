@@ -18,6 +18,7 @@
 
 		this.editing = false;
 		this.tempWord = null;
+		this.themes = [];
 
 		// Chips variables
 		this.searchText = null;

@@ -12,7 +12,7 @@
 		<h4>Kanji : {{$ctrl.searchResult.word.kanji}} | Kana : {{$ctrl.searchResult.word.kana}} | Romaji : {{$ctrl.searchResult.word.romaji}}</h4>
 		<p>Notes :</p>
 		<textarea cols="70" rows="5">{{$ctrl.searchResult.word.notes}}</textarea>
-		<p>Catégories : <span ng-repeat="category in $ctrl.searchResult.word.categories track by $index">{{category + ($index < $ctrl.searchResult.word.categories.length - 1 && ", " || "")}}</span></p>
+		<p>Catégories : <span ng-repeat="theme in $ctrl.searchResult.word.themes track by $index">{{theme + ($index < $ctrl.searchResult.word.themes.length - 1 && ", " || "")}}</span></p>
 	</div>
 
 	<hr>

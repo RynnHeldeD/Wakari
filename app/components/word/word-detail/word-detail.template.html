@@ -39,7 +39,7 @@
 	</md-list-item>
 	<md-divider></md-divider>
 	<md-subheader>Thèmes</md-subheader>
-	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetails(theme.id)" ng-repeat="theme in $ctrl.word.categories">
+	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetails(theme.id)" ng-repeat="theme in $ctrl.word.themes">
 		<div class="md-list-item-text md-offset" layout="column">
 			<h3>{{theme.name}}</h3>
 		</div>
@@ -99,12 +99,12 @@
 	<md-subheader>Thèmes</md-subheader>
 	<md-list-item class="md-2-line">
 		<div class="md-list-item-text md-offset" layout="column">
-			<md-chips ng-model="$ctrl.tempWord.categories"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
+			<md-chips ng-model="$ctrl.tempWord.themes"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
 				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" placeholder="Search for a theme">
 					<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
 				</md-autocomplete>
 				<md-chip-template>
-					<span><a ui-sref="theme-detail({themeId: category.id})">{{$chip.name}}</a></span>
+					<span><a ui-sref="theme-detail({themeId: theme.id})">{{$chip.name}}</a></span>
 				</md-chip-template>
 			</md-chips>
 		</div>
