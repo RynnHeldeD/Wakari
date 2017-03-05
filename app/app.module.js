@@ -5,7 +5,7 @@
 		.module('wakari-app', [
 			'ngMaterial',
 			'ui.router',
-			'search-box',
+			'wakari-app-search',
 			'wakari-app-word',
 			'wakari-app-theme'
 		]);

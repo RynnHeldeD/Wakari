@@ -1,0 +1,27 @@
+<md-content ng-if="$ctrl.searchResults">
+	<h2>Results</h2>
+	<md-list ng-if="$ctrl.searchResults.romaji">
+		<md-subheader>Romaji</md-subheader>
+		<md-list-item class="md-2-line" ng-repeat="word in $ctrl.searchResults.romaji" ng-click="$ctrl.goToWordDetails(word.id)">
+			<div class="md-list-item-text" layout="column">
+				<h3>{{word.meaning}}</h3>
+			</div>
+		</md-list-item>
+	</md-list>
+	<md-list ng-if="$ctrl.searchResults.meanings">
+		<md-subheader>Meanings</md-subheader>
+		<md-list-item class="md-2-line" ng-repeat="word in $ctrl.searchResults.meanings" ng-click="$ctrl.goToWordDetails(word.id)">
+			<div class="md-list-item-text" layout="column">
+				<h3>{{word.meaning}}</h3>
+			</div>
+		</md-list-item>
+	</md-list>
+	<md-list ng-if="$ctrl.searchResults.themes">
+		<md-subheader>Themes</md-subheader>
+		<md-list-item class="md-2-line" ng-repeat="theme in $ctrl.searchResults.themes" ng-click="$ctrl.goToThemeDetails(theme.id)">
+			<div class="md-list-item-text" layout="column">
+				<h3>{{theme.name}}</h3>
+			</div>
+		</md-list-item>
+	</md-list>
+</md-content>
