@@ -111,13 +111,13 @@
 	</md-list-item>
 </md-list>
 
-<md-button class="md-fab btn-edit" aria-label="Edit word" ng-if="!$ctrl.editing" ng-click="$ctrl.edit()">
+<md-button class="md-fab wk-fab wk-fab-one" aria-label="Edit word" ng-if="!$ctrl.editing" ng-click="$ctrl.edit()">
 	<md-icon md-svg-src="dist/assets/icons/editor/mode_edit.svg"></md-icon>
 </md-button>
 
-<md-button class="md-fab md-primary btn-cancel" aria-label="Cancel editing" ng-if="$ctrl.editing" ng-click="$ctrl.cancelEdit()">
+<md-button class="md-fab md-primary wk-fab wk-fab-two" aria-label="Cancel editing" ng-if="$ctrl.editing" ng-click="$ctrl.cancelEdit()">
 	<md-icon md-svg-src="dist/assets/icons/navigation/close.svg"></md-icon>
 </md-button>
-<md-button class="md-fab btn-save" aria-label="Save changes" ng-if="$ctrl.editing" ng-click="$ctrl.save()">
+<md-button class="md-fab wk-fab wk-fab-one" aria-label="Save changes" ng-if="$ctrl.editing" ng-click="$ctrl.save()">
 	<md-icon md-svg-src="dist/assets/icons/navigation/check.svg"></md-icon>
 </md-button>

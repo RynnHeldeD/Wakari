@@ -26,7 +26,7 @@ gulp.task('less-lib', function() {
 
 gulp.task('less-app', function() {
 	return gulp.src([
-		'app/components/**/*.less'
+		'app/**/*.less'
 	])
 		.pipe(less())
 		.pipe(concat('app.css'))

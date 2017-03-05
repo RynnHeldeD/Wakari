@@ -31,26 +31,6 @@
 			});
 		};
 
-		// this.create = function() {
-		// 	var word = {
-		// 		kana: 'いえ',
-		// 		kanji: '家',
-		// 		romaji: 'ue',
-		// 		meaning: 'maisonette',
-		// 		notes: "♫ C'est une maison bleue ! ♫"
-		// 	};
-
-		// 	WordService.create(word).then(function (response) {
-		// 		self.test = response.data;
-		// 		console.log(self.test);
-		// 	});
-		// };
-
-		// this.save = function() {
-		// 	self.test.notes += ' UPDATED AGAIN ! :D';
-		// 	WordService.save(self.test);
-		// };
-
 		this.goToThemeDetails = function(themeId) {
 			$state.go('theme-detail', {
 				themeId: themeId

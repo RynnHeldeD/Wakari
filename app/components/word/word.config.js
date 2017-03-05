@@ -17,6 +17,12 @@
 			}
 		};
 
+		var wordCreateState = {
+			name: 'word-create',
+			url: '/word/new',
+			component: 'wordCreate'
+		};
+
 		resolveWord.$inject = ['WordService', '$stateParams'];
 
 		function resolveWord(WordService, $stateParams) {
@@ -24,5 +30,6 @@
 		}
 
 		$stateProvider.state(wordDetailState);
+		$stateProvider.state(wordCreateState);
 	}
 })();

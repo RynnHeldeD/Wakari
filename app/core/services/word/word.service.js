@@ -14,8 +14,7 @@
 			get: get,
 			create: create,
 			save: save,
-			remove: remove,
-			searchByKeyword: searchByKeyword
+			remove: remove
 		};
 
 		function get(id) {
@@ -32,10 +31,6 @@
 
 		function remove(id) {
 			return $http.delete(endpoint + '/' + id);
-		}
-
-		function searchByKeyword(keyword) {
-			return $http.get('app/core/models/search.json');
 		}
 	}
 })();

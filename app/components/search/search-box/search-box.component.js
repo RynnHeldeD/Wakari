@@ -29,17 +29,32 @@
 					self.recentSearches.push(response.data);
 				});
 			}
-
-			WordService.searchByKeyword().then(function(response) {
-				// self.searchResults = response.data;
-			});
 		};
 
+		this.autocomplete = function(query) {
+			return SearchService.autocomplete(query);
+		}
 
 		this.search = function(query) {
 			$state.go('index.search', {
 				query: query
 			});
+		}
+
+		this.onSelectedItemChanged = function(query) {
+			if (self.selectedItem) {
+				self.search(query);
+			}
+		}
+
+		this.goToWordDetails = function(wordId) {
+            $state.go('word-detail', {
+				wordId: wordId
+			});
+		}
+
+		this.goToCreateWord = function() {
+			$state.go('word-create');
 		}
 	}
 })();

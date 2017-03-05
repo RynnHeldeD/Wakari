@@ -1,15 +1,11 @@
 <md-content layout="row" layout-padding>
 	<form ng-submit="$ctrl.search($ctrl.searchText)" flex>
-		<input ng-model="$ctrl.searchText" flex>
+		<md-autocomplete flex md-input-minlength="3" md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="result in $ctrl.autocomplete($ctrl.searchText)" md-item-text="result.name" md-selected-item-change="$ctrl.onSelectedItemChanged(result.name)" placeholder="Search">
+			<md-item-template>
+				<span md-hightlight-text="$ctrl.searchText">{{result.name}} ({{result.type}})</span>
+			</md-item-template>
+		</md-autocomplete>
 	</form>
-	<!--<md-autocomplete flex md-input-minlength="3" md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="searchResults in $ctrl.search($ctrl.searchText)" md-item-text="searchResults.meanings" placeholder="Search">
-		<md-item-template>
-			<div ng-if="searchResults.meanings">
-				<h1>Sens</h1>
-				<span ng-repeat="word in searchResults.meanings">{{word.meaning}}</span>
-			</div>
-		</md-item-template>
-	</md-autocomplete>-->
 </md-content>
 
 <ui-view></ui-view>
@@ -22,3 +18,7 @@
 		</div>
 	</md-list-item>
 </md-list>
+
+<md-button class="md-fab wk-fab wk-fab-one" aria-label="Create new word" ng-click="$ctrl.goToCreateWord()">
+	<md-icon md-svg-src="dist/assets/icons/content/add.svg"></md-icon>
+</md-button>
