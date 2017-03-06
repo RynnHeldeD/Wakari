@@ -74,7 +74,7 @@ gulp.task('script-app', function() {
 //////////////////////////////////////
 gulp.task('material-icons', function() {
 	return gulp.src('node_modules/material-design-icons/**/svg/production/*_24px.svg', {
-		'base': "node_modules/material_design_icons/"
+		'base': 'node_modules/material_design_icons/'
 	})
 		.pipe(rename(function(path) {
 			// dirname is like "..\material-design-icons\{category}\svg\production"
