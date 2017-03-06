@@ -85,7 +85,7 @@ gulp.task('material-icons', function() {
 			nameArray.splice(nameArray.length - 1, 1);
 			path.basename = nameArray.join('_');
 		}))
-		.pipe(gulp.dest('dist/assets/icons/'))
+		.pipe(gulp.dest('dist/assets/icons/'));
 });
 
 gulp.task('flags-icons', function() {
