@@ -85,14 +85,14 @@ gulp.task('material-icons', function() {
 			nameArray.splice(nameArray.length - 1, 1);
 			path.basename = nameArray.join('_');
 		}))
-		.pipe(gulp.dest('dist/assets/icons/'));
+		.pipe(gulp.dest('dist/assets/icons'));
 });
 
 gulp.task('flags-icons', function() {
 	return gulp.src('node_modules/flag-icon-css/flags/4x3/*.svg', {
 		'base': 'node_modules/flag-icon-css/flags/4x3/'
 	})
-		.pipe(gulp.dest('dist/assets/icons/flags/'));
+		.pipe(gulp.dest('dist/assets/icons/flags'));
 });
 
 ///////////////////////////////////////
