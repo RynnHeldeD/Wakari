@@ -16,11 +16,11 @@
 		};
 
 		function search(query) {
-			return $http.get(endpoint + '/' + query);
+			return $http.post(endpoint, {"data": JSON.stringify(query)});
 		}
 
 		function autocomplete(query) {
-			return $http.get(endpoint + '/autocomplete/' + query)
+			return $http.post(endpoint + '/autocomplete', {"data": JSON.stringify(query)})
 				.then(function(response) {
 					return response.data;
 				});
