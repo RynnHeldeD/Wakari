@@ -74,23 +74,25 @@ gulp.task('script-app', function() {
 //////////////////////////////////////
 gulp.task('material-icons', function() {
 	return gulp.src('node_modules/material-design-icons/**/svg/production/*_24px.svg', {
-		'base': 'node_modules/material-design-icons/'
+		'base': "node_modules/material_design_icons/"
 	})
 		.pipe(rename(function(path) {
-			path.dirname = path.dirname.split('\\')[0];
+			// dirname is like "..\material-design-icons\{category}\svg\production"
+			// so we take the third part of the url to get the category "[2]"
+			path.dirname = path.dirname.split('\\')[2];
 			var nameArray = path.basename.split('_');
 			nameArray.splice(0, 1);
 			nameArray.splice(nameArray.length - 1, 1);
 			path.basename = nameArray.join('_');
 		}))
-		.pipe(gulp.dest('dist/assets/icons'))
+		.pipe(gulp.dest('dist/assets/icons/'))
 });
 
 gulp.task('flags-icons', function() {
 	return gulp.src('node_modules/flag-icon-css/flags/4x3/*.svg', {
 		'base': 'node_modules/flag-icon-css/flags/4x3/'
 	})
-		.pipe(gulp.dest('dist/assets/icons/flags'));
+		.pipe(gulp.dest('dist/assets/icons/flags/'));
 });
 
 ///////////////////////////////////////
