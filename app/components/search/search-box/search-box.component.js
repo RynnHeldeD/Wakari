@@ -41,15 +41,26 @@
 			});
 		}
 
-		this.onSelectedItemChanged = function(query) {
+		this.onSelectedItemChanged = function(item) {
 			if (self.selectedItem) {
-				self.search(query);
+				if (item.type === 'word') {
+					self.goToWordDetails(item.id);
+				}
+				else if (item.type === 'theme') {
+					self.goToThemeDetails(item.id);
+				}
 			}
 		}
 
 		this.goToWordDetails = function(wordId) {
             $state.go('word-detail', {
 				wordId: wordId
+			});
+		}
+
+		this.goToThemeDetails = function(themeId) {
+            $state.go('theme-detail', {
+				themeId: themeId
 			});
 		}
 

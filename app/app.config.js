@@ -5,9 +5,9 @@
 		.module('wakari-app')
 		.config(config);
 	
-	config.$inject = ['$stateProvider', '$urlRouterProvider'];
+	config.$inject = ['$stateProvider', '$urlRouterProvider', '$mdThemingProvider'];
 
-	function config($stateProvider, $urlRouterProvider) {
+	function config($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 		var indexState = {
 			name: 'index',
 			url: '/',
@@ -16,5 +16,16 @@
 
 		$urlRouterProvider.otherwise('/');
 		$stateProvider.state(indexState);
+
+		// THEMING
+		var orangePalette = $mdThemingProvider.extendPalette('orange', {
+			contrastDefaultColor: 'light'
+		});
+
+		$mdThemingProvider.definePalette('light-orange', orangePalette);
+
+		$mdThemingProvider.theme('default')
+			.primaryPalette('red')
+			.accentPalette('light-orange');
 	}
 })();
