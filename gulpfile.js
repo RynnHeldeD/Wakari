@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var notify = require('gulp-notify');
+var slash = require('gulp-slash');
 var del = require('del');
 
 
@@ -79,7 +80,8 @@ gulp.task('material-icons', function() {
 		.pipe(rename(function(path) {
 			// dirname is like "..\material-design-icons\{category}\svg\production"
 			// so we take the third part of the url to get the category "[2]"
-			path.dirname = path.dirname.split('\\')[2];
+			path.dirname = slash(path.dirname);
+			path.dirname = path.dirname.split('/')[2];
 			var nameArray = path.basename.split('_');
 			nameArray.splice(0, 1);
 			nameArray.splice(nameArray.length - 1, 1);
