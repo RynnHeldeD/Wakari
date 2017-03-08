@@ -3,43 +3,43 @@
 	<md-list-item class="md-2-line">
 		<md-icon md-svg-src="dist/assets/icons/flags/fr.svg"></md-icon>
 		<div class="md-list-item-text" layout="column">
-			<h3>Français</h3>
-			<p>{{$ctrl.word.meaning | capitalize}}</p>
+			<h3>{{$ctrl.word.meaning | capitalize}}</h3>
+			<p>Français</p>
 		</div>
 	</md-list-item>
 	<md-list-item class="md-2-line">
 		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
 		<div class="md-list-item-text" layout="column">
-			<h3>Romaji</h3>
-			<p>{{$ctrl.word.romaji}}</p>
+			<h3>{{$ctrl.word.romaji}}</h3>
+			<p>Romaji</p>
 		</div>
 	</md-list-item>
 	<md-list-item class="md-2-line">
 		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
 		<div class="md-list-item-text" layout="column">
-			<h3>Kana</h3>
-			<p>{{$ctrl.word.kana}}</p>
+			<h3>{{$ctrl.word.kana}}</h3>
+			<p>Kana</p>
 		</div>
 	</md-list-item>
 	<md-list-item class="md-2-line">
 		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
 		<div class="md-list-item-text" layout="column">
-			<h3>Kanji</h3>
-			<p>{{$ctrl.word.kanji}}</p>
+			<h3>{{$ctrl.word.kanji}}</h3>
+			<p>Kanji</p>
 		</div>
 	</md-list-item>
-	<md-divider></md-divider>
-	<md-subheader>Informations</md-subheader>
-	<md-list-item class="md-2-line md-long-text">
+	<md-divider ng-if="$ctrl.word.notes"></md-divider>
+	<md-subheader ng-if="$ctrl.word.notes">Informations</md-subheader>
+	<md-list-item class="md-2-line md-long-text" ng-if="$ctrl.word.notes">
 		<md-icon md-svg-src="dist/assets/icons/av/note.svg"></md-icon>
 		<div class="md-list-item-text" layout="column">
 			<h3>Notes</h3>
 			<p>{{$ctrl.word.notes}}</p>
 		</div>
 	</md-list-item>
-	<md-divider></md-divider>
-	<md-subheader>Thèmes</md-subheader>
-	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetails(theme.id)" ng-repeat="theme in $ctrl.word.themes">
+	<md-divider ng-if="$ctrl.word.themes.length > 0"></md-divider>
+	<md-subheader ng-if="$ctrl.word.themes.length > 0">Thèmes</md-subheader>
+	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetails(theme.id)" ng-repeat="theme in $ctrl.word.themes" ng-if="$ctrl.word.themes.length > 0">
 		<div class="md-list-item-text md-offset" layout="column">
 			<h3>{{theme.name}}</h3>
 		</div>
@@ -100,7 +100,7 @@
 	<md-list-item class="md-2-line">
 		<div class="md-list-item-text md-offset" layout="column">
 			<md-chips ng-model="$ctrl.tempWord.themes"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
-				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" placeholder="Search for a theme">
+				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" md-min-length="0" placeholder="Search for a theme">
 					<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
 				</md-autocomplete>
 				<md-chip-template>

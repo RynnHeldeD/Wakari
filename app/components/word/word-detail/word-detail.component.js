@@ -73,7 +73,7 @@
 		};
 
 		this.searchTheme = function(query) {
-			var results = query ? self.themes.filter(themeFilter(query)) : [];
+			var results = query ? self.themes.filter(themeFilter(query)) : self.themes;
 			return results;
 		};
 

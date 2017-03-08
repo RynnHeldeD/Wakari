@@ -1,23 +1,25 @@
-<md-content layout="row" layout-padding>
-	<form ng-submit="$ctrl.search($ctrl.searchText)" flex>
-		<md-autocomplete flex md-input-minlength="3" md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="result in $ctrl.autocomplete($ctrl.searchText)" md-item-text="result.name" md-selected-item-change="$ctrl.onSelectedItemChanged(result)" placeholder="Search">
+
+<md-content layout-padding>
+	<form class="search-box" ng-submit="$ctrl.search($ctrl.searchText)" flex>
+		<md-autocomplete flex md-input-minlength="3" md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="result in $ctrl.autocomplete($ctrl.searchText)" md-item-text="result.name" md-selected-item-change="$ctrl.onSelectedItemChanged(result)" md-menu-class="autocomplete" placeholder="Search">
 			<md-item-template>
-				<span md-hightlight-text="$ctrl.searchText">{{result.name}} ({{result.type}})</span>
+				<span class="item-data" md-highlight-text="$ctrl.searchText" md-highlight-flags="i">{{result.name}}</span>
+				<span class="item-title">{{$ctrl.translate(result.type)}}</span>
 			</md-item-template>
 		</md-autocomplete>
 	</form>
-</md-content>
-
+</md-content>	
 <ui-view></ui-view>
 
-<md-list>
+
+<!--<md-list>
 	<md-subheader>Recent searches</md-subheader>
-	<md-list-item class="md-2-line" ng-repeat="recentWord in $ctrl.recentSearches" ng-click="$ctrl.goToWordDetails(recentWord.id)">
+	<md-list-item ng-repeat="recentWord in $ctrl.recentSearches" ng-click="$ctrl.goToWordDetails(recentWord.id)">
 		<div class="md-list-item-text" layout="column">
-			<h3>{{recentWord.meaning}}</h3>
+			<p>{{recentWord.meaning}}</p>
 		</div>
 	</md-list-item>
-</md-list>
+</md-list>-->
 
 <md-button class="md-fab md-fab-bottom-right" aria-label="Create new word" ng-click="$ctrl.goToCreateWord()">
 	<md-icon md-svg-src="dist/assets/icons/content/add.svg"></md-icon>

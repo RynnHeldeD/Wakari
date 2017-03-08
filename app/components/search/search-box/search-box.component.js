@@ -16,7 +16,7 @@
 		
 		// Autocomplete variables
 		this.selectedItem = null;
-		this.searchText = '';
+		this.searchText = null;
 
 		this.recentSearches = [];
 
@@ -53,19 +53,23 @@
 		}
 
 		this.goToWordDetails = function(wordId) {
-            $state.go('word-detail', {
+			$state.go('word-detail', {
 				wordId: wordId
 			});
 		}
 
 		this.goToThemeDetails = function(themeId) {
-            $state.go('theme-detail', {
+			$state.go('theme-detail', {
 				themeId: themeId
 			});
 		}
 
 		this.goToCreateWord = function() {
 			$state.go('word-create');
+		}
+
+		this.translate = function(key) {
+			return WordService.translate(key);
 		}
 	}
 })();

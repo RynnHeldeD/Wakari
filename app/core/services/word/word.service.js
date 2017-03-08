@@ -14,7 +14,8 @@
 			get: get,
 			create: create,
 			save: save,
-			remove: remove
+			remove: remove,
+			translate: translate
 		};
 
 		function get(id) {
@@ -31,6 +32,17 @@
 
 		function remove(id) {
 			return $http.delete(endpoint + '/' + id);
+		}
+
+		function translate(key) {
+			switch (key) {
+				case 'word':
+					return 'Mot';
+				case 'theme':
+					return 'Thème';
+				case 'romaji':
+					return 'Romaji';
+			}
 		}
 	}
 })();

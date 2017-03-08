@@ -1,8 +1,8 @@
 (function() {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('wakari-app-search', [
-            'ui.router'
-        ]);
+	angular
+		.module('wakari-app-search', [
+			'ui.router'
+		]);
 })();

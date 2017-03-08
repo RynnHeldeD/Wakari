@@ -1,11 +1,11 @@
 (function() {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('wakari-app-theme')
-        .config(config);
-    
-    config.$inject = ['$stateProvider'];
+	angular
+		.module('wakari-app-theme')
+		.config(config);
+
+	config.$inject = ['$stateProvider'];
 
 	function config($stateProvider) {
 		var themeDetailState = {

@@ -22,13 +22,13 @@
 
 		this.$onInit = function() {
 			self.word = {
-                kana: '',
-                kanji: '',
-                romaji: '',
-                meaning: '',
-                notes: '',
-                themes: []
-            };
+				kana: '',
+				kanji: '',
+				romaji: '',
+				meaning: '',
+				notes: '',
+				themes: []
+			};
 
 			ThemeService.getAll().then(function(response) {
 				self.themes = response.data;
@@ -37,10 +37,10 @@
 
 		this.create = function() {
 			WordService.create(self.word).then(function(response) {
-                if (!response.error) {
-                    self.goToWordDetails(response.data.id);
-                }
-            });
+				if (!response.error) {
+					self.goToWordDetails(response.data.id);
+				}
+			});
 		};
 
 		this.goToThemeDetails = function(themeId) {
@@ -48,9 +48,9 @@
 				themeId: themeId
 			});
 		};
-
-        this.goToWordDetails = function(wordId) {
-            $state.go('word-detail', {
+		
+		this.goToWordDetails = function(wordId) {
+			$state.go('word-detail', {
 				wordId: wordId
 			});
 		}
