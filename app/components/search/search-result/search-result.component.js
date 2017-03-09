@@ -16,19 +16,19 @@
 
 	function SearchResultController(WordService, SearchService, StateService) {
 		var self = this;
-		this.searchResults = null;
-		this.userQuery = null;
+		self.searchResults = null;
+		self.userQuery = null;
 
-		this.$onInit = function() {
+		self.$onInit = function() {
 			self.searchResults = self.searchData.data;
 			self.userQuery = self.query;
 		};
 
-		this.goToWordDetails = function(wordId) {
+		self.goToWordDetails = function(wordId) {
 			StateService.goToWordDetail(wordId);
 		}
 
-		this.goToThemeDetails = function(themeId) {
+		self.goToThemeDetails = function(themeId) {
 			StateService.goToThemeDetail(themeId);
 		};
 	}

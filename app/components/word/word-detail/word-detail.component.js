@@ -16,40 +16,40 @@
 	function WordDetailController(WordService, ThemeService, StateService) {
 		var self = this;
 
-		this.editing = false;
-		this.tempWord = null;
-		this.themes = [];
+		self.editing = false;
+		self.tempWord = null;
+		self.themes = [];
 
 		// Chips variables
-		this.searchText = null;
-		this.selectedItem = null;
+		self.searchText = null;
+		self.selectedItem = null;
 
-		this.$onInit = function() {
+		self.$onInit = function() {
 			self.word = self.wordData.data;
 			ThemeService.getAll().then(function(response) {
 				self.themes = response.data;
 			});
 		};
 
-		this.goToThemeDetail = function(themeId) {
+		self.goToThemeDetail = function(themeId) {
 			StateService.goToThemeDetail(themeId);
 		};
 
-		this.delete = function() {
+		self.delete = function() {
 			WordService.remove(750);
 		};
 
-		this.edit = function() {
-			this.editing = true;
-			this.tempWord = angular.copy(this.word);
+		self.edit = function() {
+			self.editing = true;
+			self.tempWord = angular.copy(self.word);
 		};
 
-		this.cancelEdit = function() {
-			this.editing = false;
-			this.searchText = null;
+		self.cancelEdit = function() {
+			self.editing = false;
+			self.searchText = null;
 		};
 
-		this.save = function() {
+		self.save = function() {
 			self.word = angular.copy(self.tempWord);
 
 			WordService.save(self.word)
@@ -59,7 +59,7 @@
 				});
 		};
 
-		this.createChip = function(chip) {
+		self.createChip = function(chip) {
 			if (angular.isObject(chip)) {
 				return chip;
 			}
@@ -70,7 +70,7 @@
 			};
 		};
 
-		this.searchTheme = function(query) {
+		self.searchTheme = function(query) {
 			var results = query ? self.themes.filter(themeFilter(query)) : self.themes;
 			return results;
 		};

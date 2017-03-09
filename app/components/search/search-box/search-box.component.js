@@ -12,15 +12,15 @@
 
 	function SearchBoxController(WordService, SearchService, StateService) {
 		var self = this;
-		this.searchResults = null;
+		self.searchResults = null;
 		
 		// Autocomplete variables
-		this.selectedItem = null;
-		this.searchText = null;
+		self.selectedItem = null;
+		self.searchText = null;
 
-		this.recentSearches = [];
+		self.recentSearches = [];
 
-		this.$onInit = function() {
+		self.$onInit = function() {
 			// var startId = 14;
 			// var endId = 20;
 
@@ -31,15 +31,15 @@
 			// }
 		};
 
-		this.autocomplete = function(query) {
+		self.autocomplete = function(query) {
 			return SearchService.autocomplete(query);
 		}
 
-		this.search = function(query) {
+		self.search = function(query) {
 			StateService.goToSearch(query);
 		}
 
-		this.onSelectedItemChanged = function(item) {
+		self.onSelectedItemChanged = function(item) {
 			if (self.selectedItem) {
 				if (item.type === 'word') {
 					self.goToWordDetail(item.id);
@@ -50,19 +50,19 @@
 			}
 		}
 
-		this.goToWordDetail = function(wordId) {
+		self.goToWordDetail = function(wordId) {
 			StateService.goToWordDetail(wordId);
 		}
 
-		this.goToThemeDetail = function(themeId) {
+		self.goToThemeDetail = function(themeId) {
 			StateService.goToThemeDetail(themeId);
 		}
 
-		this.goToWordCreate = function() {
+		self.goToWordCreate = function() {
 			StateService.goToWordCreate();
 		}
 
-		this.translate = function(key) {
+		self.translate = function(key) {
 			return WordService.translate(key);
 		}
 	}

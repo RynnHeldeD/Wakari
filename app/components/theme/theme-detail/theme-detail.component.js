@@ -17,7 +17,7 @@
 	function ThemeDetailController(WordService) {
 		var self = this;
 
-		this.$onInit = function() {
+		self.$onInit = function() {
 			self.theme = self.themeData.data;
 			self.words = self.wordsData.data;
 		};

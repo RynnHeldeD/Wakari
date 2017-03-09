@@ -13,14 +13,14 @@
 	function WordCreateController(WordService, ThemeService) {
 		var self = this;
 
-		this.word = null;
-		this.themes = [];
+		self.word = null;
+		self.themes = [];
 
 		// Chips variables
-		this.searchText = null;
-		this.selectedItem = null;
+		self.searchText = null;
+		self.selectedItem = null;
 
-		this.$onInit = function() {
+		self.$onInit = function() {
 			self.word = {
 				kana: '',
 				kanji: '',
@@ -35,7 +35,7 @@
 			});
 		};
 
-		this.create = function() {
+		self.create = function() {
 			WordService.create(self.word).then(function(response) {
 				if (!response.error) {
 					self.goToWordDetails(response.data.id);
@@ -43,7 +43,7 @@
 			});
 		};
 
-		this.createChip = function(chip) {
+		self.createChip = function(chip) {
 			if (angular.isObject(chip)) {
 				return chip;
 			}
@@ -54,7 +54,7 @@
 			};
 		};
 
-		this.searchTheme = function(query) {
+		self.searchTheme = function(query) {
 			var results = query ? self.themes.filter(themeFilter(query)) : self.themes;
 			return results;
 		};
