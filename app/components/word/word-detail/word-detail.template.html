@@ -39,7 +39,7 @@
 	</md-list-item>
 	<md-divider ng-if="$ctrl.word.themes.length > 0"></md-divider>
 	<md-subheader ng-if="$ctrl.word.themes.length > 0">Thèmes</md-subheader>
-	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetails(theme.id)" ng-repeat="theme in $ctrl.word.themes" ng-if="$ctrl.word.themes.length > 0">
+	<md-list-item class="md-2-line" ng-click="$ctrl.goToThemeDetail(theme.id)" ng-repeat="theme in $ctrl.word.themes" ng-if="$ctrl.word.themes.length > 0">
 		<div class="md-list-item-text md-offset" layout="column">
 			<h3>{{theme.name}}</h3>
 		</div>

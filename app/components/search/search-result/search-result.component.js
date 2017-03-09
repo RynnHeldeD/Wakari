@@ -12,9 +12,9 @@
 			}
 		});
 	
-	SearchResultController.$inject = ['WordService', 'SearchService', '$state'];
+	SearchResultController.$inject = ['WordService', 'SearchService', 'StateService'];
 
-	function SearchResultController(WordService, SearchService, $state) {
+	function SearchResultController(WordService, SearchService, StateService) {
 		var self = this;
 		this.searchResults = null;
 		this.userQuery = null;
@@ -25,15 +25,11 @@
 		};
 
 		this.goToWordDetails = function(wordId) {
-			$state.go('word-detail', {
-				wordId: wordId
-			});
+			StateService.goToWordDetail(wordId);
 		}
 
 		this.goToThemeDetails = function(themeId) {
-			$state.go('theme-detail', {
-				themeId: themeId
-			});
+			StateService.goToThemeDetail(themeId);
 		};
 	}
 })();

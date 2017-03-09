@@ -11,9 +11,9 @@
 			}
 		});
 
-	WordDetailController.$inject = ['WordService', 'ThemeService', '$state'];
+	WordDetailController.$inject = ['WordService', 'ThemeService', 'StateService'];
 
-	function WordDetailController(WordService, ThemeService, $state) {
+	function WordDetailController(WordService, ThemeService, StateService) {
 		var self = this;
 
 		this.editing = false;
@@ -31,10 +31,8 @@
 			});
 		};
 
-		this.goToThemeDetails = function(themeId) {
-			$state.go('theme-detail', {
-				themeId: themeId
-			});
+		this.goToThemeDetail = function(themeId) {
+			StateService.goToThemeDetail(themeId);
 		};
 
 		this.delete = function() {

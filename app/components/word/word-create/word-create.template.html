@@ -52,7 +52,7 @@
 	<md-list-item class="md-2-line">
 		<div class="md-list-item-text md-offset" layout="column">
 			<md-chips ng-model="$ctrl.word.themes"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
-				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" placeholder="Search for a theme">
+				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" md-min-length="0" placeholder="Search for a theme">
 					<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
 				</md-autocomplete>
 				<md-chip-template>

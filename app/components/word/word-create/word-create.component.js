@@ -8,9 +8,9 @@
 			controller: WordCreateController
 		});
 
-	WordCreateController.$inject = ['WordService', 'ThemeService', '$state'];
+	WordCreateController.$inject = ['WordService', 'ThemeService'];
 
-	function WordCreateController(WordService, ThemeService, $state) {
+	function WordCreateController(WordService, ThemeService) {
 		var self = this;
 
 		this.word = null;
@@ -43,18 +43,6 @@
 			});
 		};
 
-		this.goToThemeDetails = function(themeId) {
-			$state.go('theme-detail', {
-				themeId: themeId
-			});
-		};
-		
-		this.goToWordDetails = function(wordId) {
-			$state.go('word-detail', {
-				wordId: wordId
-			});
-		}
-
 		this.createChip = function(chip) {
 			if (angular.isObject(chip)) {
 				return chip;
@@ -67,7 +55,7 @@
 		};
 
 		this.searchTheme = function(query) {
-			var results = query ? self.themes.filter(themeFilter(query)) : [];
+			var results = query ? self.themes.filter(themeFilter(query)) : self.themes;
 			return results;
 		};
 
