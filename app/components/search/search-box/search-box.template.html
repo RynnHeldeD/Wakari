@@ -2,8 +2,10 @@
 	<form class="search-box" ng-submit="$ctrl.search($ctrl.searchText)" flex>
 		<md-autocomplete flex md-input-minlength="3" md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="result in $ctrl.autocomplete($ctrl.searchText)" md-item-text="result.name" md-selected-item-change="$ctrl.onSelectedItemChanged(result)" md-menu-class="autocomplete" placeholder="Search">
 			<md-item-template>
+				<div class="item-chip" md-colors="::{background: 'accent-300'}">
+					<span class="item-title">{{$ctrl.translate(result.type)}}</span>
+				</div>
 				<span class="item-data" md-highlight-text="$ctrl.searchText" md-highlight-flags="i">{{result.name}}</span>
-				<span class="item-title">{{$ctrl.translate(result.type)}}</span>
 			</md-item-template>
 		</md-autocomplete>
 	</form>
