@@ -20,36 +20,41 @@
 		self.tempWord = null;
 		self.themes = [];
 
-		// Chips variables
+		// Autocomplete variables
 		self.searchText = null;
 		self.selectedItem = null;
 
-		self.$onInit = function() {
+		self.$onInit = onInit;
+		self.goToThemeDetail = StateService.goToThemeDetail;
+		self.remove = remove;
+		self.edit = edit;
+		self.cancelEdit = cancelEdit;
+		self.save = save;
+		self.createChip = createChip;
+		self.searchTheme = searchTheme;
+		
+		function onInit() {
 			self.word = self.wordData.data;
 			ThemeService.getAll().then(function(response) {
 				self.themes = response.data;
 			});
 		};
 
-		self.goToThemeDetail = function(themeId) {
-			StateService.goToThemeDetail(themeId);
-		};
-
-		self.delete = function() {
+		function remove() {
 			WordService.remove(750);
 		};
 
-		self.edit = function() {
+		function edit() {
 			self.editing = true;
 			self.tempWord = angular.copy(self.word);
 		};
 
-		self.cancelEdit = function() {
+		function cancelEdit() {
 			self.editing = false;
 			self.searchText = null;
 		};
 
-		self.save = function() {
+		function save() {
 			self.word = angular.copy(self.tempWord);
 
 			WordService.save(self.word)
@@ -59,7 +64,7 @@
 				});
 		};
 
-		self.createChip = function(chip) {
+		function createChip(chip) {
 			if (angular.isObject(chip)) {
 				return chip;
 			}
@@ -70,7 +75,7 @@
 			};
 		};
 
-		self.searchTheme = function(query) {
+		function searchTheme(query) {
 			var results = query ? self.themes.filter(themeFilter(query)) : self.themes;
 			return results;
 		};

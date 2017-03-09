@@ -19,17 +19,13 @@
 		self.searchResults = null;
 		self.userQuery = null;
 
-		self.$onInit = function() {
+		self.$onInit = onInit;
+		self.goToWordDetail = StateService.goToWordDetail;
+		self.goToThemeDetail = StateService.goToThemeDetail;
+
+		function onInit() {
 			self.searchResults = self.searchData.data;
 			self.userQuery = self.query;
-		};
-
-		self.goToWordDetails = function(wordId) {
-			StateService.goToWordDetail(wordId);
-		}
-
-		self.goToThemeDetails = function(themeId) {
-			StateService.goToThemeDetail(themeId);
 		};
 	}
 })();

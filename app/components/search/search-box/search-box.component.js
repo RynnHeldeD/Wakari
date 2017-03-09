@@ -12,15 +12,23 @@
 
 	function SearchBoxController(WordService, SearchService, StateService) {
 		var self = this;
-		self.searchResults = null;
 		
 		// Autocomplete variables
 		self.selectedItem = null;
 		self.searchText = null;
 
-		self.recentSearches = [];
+		// self.recentSearches = [];
 
-		self.$onInit = function() {
+		self.$onInit = onInit;
+		self.autocomplete = autocomplete;
+		self.search = search;
+		self.onSelectedItemChanged = onSelectedItemChanged;
+		self.goToWordDetail = StateService.goToWordDetail;
+		self.goToThemeDetail = StateService.goToThemeDetail;
+		self.goToWordCreate = StateService.goToWordCreate;
+		self.translate = translate;
+
+		function onInit() {
 			// var startId = 14;
 			// var endId = 20;
 
@@ -29,17 +37,17 @@
 			// 		self.recentSearches.push(response.data);
 			// 	});
 			// }
-		};
+		}
 
-		self.autocomplete = function(query) {
+		function autocomplete(query) {
 			return SearchService.autocomplete(query);
 		}
 
-		self.search = function(query) {
+		function search(query) {
 			StateService.goToSearch(query);
 		}
 
-		self.onSelectedItemChanged = function(item) {
+		function onSelectedItemChanged(item) {
 			if (self.selectedItem) {
 				if (item.type === 'word') {
 					self.goToWordDetail(item.id);
@@ -50,19 +58,7 @@
 			}
 		}
 
-		self.goToWordDetail = function(wordId) {
-			StateService.goToWordDetail(wordId);
-		}
-
-		self.goToThemeDetail = function(themeId) {
-			StateService.goToThemeDetail(themeId);
-		}
-
-		self.goToWordCreate = function() {
-			StateService.goToWordCreate();
-		}
-
-		self.translate = function(key) {
+		 function translate(key) {
 			return WordService.translate(key);
 		}
 	}

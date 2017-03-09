@@ -16,11 +16,16 @@
 		self.word = null;
 		self.themes = [];
 
-		// Chips variables
+		// Autocomplete variables
 		self.searchText = null;
 		self.selectedItem = null;
 
-		self.$onInit = function() {
+		self.$onInit = onInit;
+		self.create = create;
+		self.createChip = createChip;
+		self.searchTheme = searchTheme;
+		
+		function onInit() {
 			self.word = {
 				kana: '',
 				kanji: '',
@@ -35,7 +40,7 @@
 			});
 		};
 
-		self.create = function() {
+		function create() {
 			WordService.create(self.word).then(function(response) {
 				if (!response.error) {
 					self.goToWordDetails(response.data.id);
@@ -43,7 +48,7 @@
 			});
 		};
 
-		self.createChip = function(chip) {
+		function createChip(chip) {
 			if (angular.isObject(chip)) {
 				return chip;
 			}
@@ -54,7 +59,7 @@
 			};
 		};
 
-		self.searchTheme = function(query) {
+		function searchTheme(query) {
 			var results = query ? self.themes.filter(themeFilter(query)) : self.themes;
 			return results;
 		};

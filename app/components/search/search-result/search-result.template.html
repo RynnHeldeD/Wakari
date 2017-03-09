@@ -1,21 +1,21 @@
 <md-content ng-if="$ctrl.searchResults" layout="column" flex>
 	<md-subheader class="md-primary" ng-if="$ctrl.searchResults.romaji">Romaji</md-subheader>
 	<md-list ng-if="$ctrl.searchResults.romaji">
-		<md-list-item ng-repeat="word in $ctrl.searchResults.romaji" ng-click="$ctrl.goToWordDetails(word.id)">
+		<md-list-item ng-repeat="word in $ctrl.searchResults.romaji" ng-click="$ctrl.goToWordDetail(word.id)">
 			<md-icon md-svg-src="dist/assets/icons/action/translate.svg"></md-icon>
 			<p md-highlight-text="$ctrl.userQuery">{{word.meaning}}</p>
 		</md-list-item>
 	</md-list>
 	<md-subheader class="md-primary" ng-if="$ctrl.searchResults.meanings">Mots</md-subheader>
 	<md-list ng-if="$ctrl.searchResults.meanings">
-		<md-list-item ng-repeat="word in $ctrl.searchResults.meanings" ng-click="$ctrl.goToWordDetails(word.id)">
+		<md-list-item ng-repeat="word in $ctrl.searchResults.meanings" ng-click="$ctrl.goToWordDetail(word.id)">
 				<md-icon md-svg-src="dist/assets/icons/action/description.svg"></md-icon>
 				<p md-highlight-text="$ctrl.userQuery">{{word.meaning}}</p>
 		</md-list-item>
 	</md-list>
 	<md-subheader class="md-primary" ng-if="$ctrl.searchResults.themes">Thèmes</md-subheader>
 	<md-list ng-if="$ctrl.searchResults.themes">
-		<md-list-item ng-repeat="theme in $ctrl.searchResults.themes" ng-click="$ctrl.goToThemeDetails(theme.id)">
+		<md-list-item ng-repeat="theme in $ctrl.searchResults.themes" ng-click="$ctrl.goToThemeDetail(theme.id)">
 				<md-icon md-svg-src="dist/assets/icons/action/book.svg"></md-icon>
 				<p md-highlight-text="$ctrl.userQuery">{{theme.name}}</p>
 		</md-list-item>
