@@ -1,4 +1,8 @@
-<h1>{{$ctrl.theme.name}}</h1>
-<ul>
-	<li ng-repeat="word in $ctrl.words">{{word.meaning}}</li>
-</ul>
+<md-content>
+	<md-subheader class="md-primary">{{$ctrl.theme.name | capitalize}}</md-subheader>
+	<md-list>
+		<md-list-item ng-repeat="word in $ctrl.words">
+			<p>{{word.meaning}}</p>
+		</md-list-item>
+	</md-list>
+</md-content>
