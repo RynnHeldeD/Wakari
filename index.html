@@ -7,20 +7,16 @@
 		<link rel="stylesheet" href="dist/assets/app.css">
 	</head>
 	<body >
-		<div ng-app="wakari-app" layout="column" layout-fill>
-			<md-content layout="column" flex>
-				<md-toolbar>
-					<div class="md-toolbar-tools">
-						<h2 flex md-truncate><a ui-sref="index()">Wakari</a></h2>
-						<md-button class="md-icon-button" aria-label="Settings">
-							<md-icon md-svg-src="dist/assets/icons/navigation/more_vert.svg"></md-icon>
-						</md-button>
-					</div>
-				</md-toolbar>
-				<md-content>
-					<ui-view></ui-view>
-				</md-content>
-			</md-content>
+		<div ng-app="wakari-app" layout-fill>
+			<md-toolbar flex>
+				<div class="md-toolbar-tools">
+					<h2 flex md-truncate><a ui-sref="index()">Wakari</a></h2>
+					<md-button class="md-icon-button" aria-label="Settings">
+						<md-icon md-svg-src="dist/assets/icons/navigation/more_vert.svg"></md-icon>
+					</md-button>
+				</div>
+			</md-toolbar>
+			<ui-view flex></ui-view>
 		</div>
 		<script src="dist/app/lib.js"></script>
 		<script src="dist/app/app.js"></script>

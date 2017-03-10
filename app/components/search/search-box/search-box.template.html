@@ -1,5 +1,5 @@
-<md-content layout-padding>
-	<form class="search-box" ng-submit="$ctrl.search($ctrl.searchText)" flex>
+<div class="wk-search-box" layout-padding>
+	<form ng-submit="$ctrl.search($ctrl.searchText)" flex>
 		<md-autocomplete flex md-input-minlength="3" md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="result in $ctrl.autocomplete($ctrl.searchText)" md-item-text="result.name" md-selected-item-change="$ctrl.onSelectedItemChanged(result)" md-menu-class="autocomplete" placeholder="Search">
 			<md-item-template>
 				<div class="item-chip" md-colors="::{background: 'accent-300'}">
@@ -9,9 +9,27 @@
 			</md-item-template>
 		</md-autocomplete>
 	</form>
-</md-content>
+</div>
 
-<ui-view></ui-view>
+<div layout="column">
+	<ui-view flex></ui-view>
+
+	<md-fab-speed-dial md-direction="up" class="md-scale md-fab-bottom-right">
+		<md-fab-trigger>
+			<md-button class="md-fab" aria-label="Open the create options">
+				<md-icon md-svg-src="dist/assets/icons/content/add.svg"></md-icon>
+			</md-button>
+		</md-fab-trigger>
+		<md-fab-actions>
+				<md-button class="md-fab md-mini md-primary" aria-label="Create new word" ng-click="$ctrl.goToWordCreate()">
+					<md-icon md-svg-src="dist/assets/icons/action/description.svg"></md-icon>
+				</md-button>
+				<md-button class="md-fab md-mini md-primary" aria-label="Create new theme" ng-click="$ctrl.goToWordCreate()">
+					<md-icon md-svg-src="dist/assets/icons/action/book.svg"></md-icon>
+				</md-button>
+			</md-fab-actions>
+	</md-fab-speed-dial>
+</div>
 
 <!--<md-list>
 	<md-subheader>Recent searches</md-subheader>
@@ -21,7 +39,3 @@
 		</div>
 	</md-list-item>
 </md-list>-->
-
-<md-button class="md-fab md-fab-bottom-right" aria-label="Create new word" ng-click="$ctrl.goToWordCreate()">
-	<md-icon md-svg-src="dist/assets/icons/content/add.svg"></md-icon>
-</md-button>
