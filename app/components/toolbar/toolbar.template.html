@@ -1,0 +1,24 @@
+<md-toolbar flex>
+	<div class="md-toolbar-tools">
+		<h2 flex md-truncate><a ui-sref="index()">Wakari</a></h2>
+		<md-menu>
+			<md-button class="md-icon-button" aria-label="Open application menu" ng-click="ctrl.openMenu($mdMenu, $event)">
+				<md-icon md-menu-origin md-svg-src="dist/assets/icons/navigation/more_vert.svg"></md-icon>
+			</md-button>
+			<md-menu-content width="4">
+				<md-menu-item>
+					<md-button ng-click="ctrl.goToThemeList()">
+						<md-icon md-menu-align-target md-svg-src="dist/assets/icons/action/book.svg"></md-icon>
+						Thèmes
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button ng-click="ctrl.soon()">
+						<md-icon md-menu-align-target md-svg-src="dist/assets/icons/action/description.svg"></md-icon>
+						Pages
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+	</div>
+</md-toolbar>

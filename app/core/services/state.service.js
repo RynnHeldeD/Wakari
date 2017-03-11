@@ -13,7 +13,8 @@
 			goToWordCreate: goToWordCreate,
 			goToWordDetail: goToWordDetail,
 			goToThemeCreate: goToThemeCreate,
-			goToThemeDetail: goToThemeDetail
+			goToThemeDetail: goToThemeDetail,
+			goToThemeList: goToThemeList
 		};
 
 		function goToSearch(query) {
@@ -40,6 +41,10 @@
 			$state.go('theme-detail', {
 				'themeId': themeId
 			});
+		}
+
+		function goToThemeList() {
+			$state.go('theme-list');
 		}
 	}
 })();
