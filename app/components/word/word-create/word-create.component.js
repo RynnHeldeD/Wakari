@@ -8,9 +8,9 @@
 			controller: WordCreateController
 		});
 
-	WordCreateController.$inject = ['WordService', 'ThemeService'];
+	WordCreateController.$inject = ['WordService', 'ThemeService', 'StateService'];
 
-	function WordCreateController(WordService, ThemeService) {
+	function WordCreateController(WordService, ThemeService, StateService) {
 		var self = this;
 
 		self.word = null;
@@ -43,7 +43,7 @@
 		function create() {
 			WordService.create(self.word).then(function(response) {
 				if (!response.error) {
-					self.goToWordDetails(response.data.id);
+					StateService.goToWordDetail(response.data.id);
 				}
 			});
 		};

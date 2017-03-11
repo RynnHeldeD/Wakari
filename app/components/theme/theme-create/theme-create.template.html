@@ -1,0 +1,11 @@
+<div layout="column" layout-fill layout-padding>
+	<md-subheader>Nouveau thème</md-subheader>
+	<md-input-container>
+		<label>Nom</label>
+		<input ng-model="$ctrl.theme.name">
+	</md-input-container>
+</div>
+
+<md-button class="md-fab md-fab-bottom-right" aria-label="Create theme" ng-click="$ctrl.create()">
+	<md-icon md-svg-src="dist/assets/icons/navigation/check.svg"></md-icon>
+</md-button>

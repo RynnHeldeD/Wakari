@@ -18,6 +18,21 @@
 			}
 		};
 
+		var themeCreateState = {
+			name: 'theme-create',
+			url: '/theme/new',
+			component: 'themeCreate'
+		};
+
+		var themeListState = {
+			name: 'theme-list',
+			url: '/theme/all',
+			component: 'themeList',
+			resolve: {
+				themesData: resolveThemes
+			}
+		}
+
 		resolveTheme.$inject = ['ThemeService', '$stateParams'];
 		resolveWords.$inject = ['ThemeService', '$stateParams'];
 
@@ -29,6 +44,12 @@
 			return ThemeService.getWords(+$stateParams.themeId);
 		}
 
+		function resolveThemes(ThemeService) {
+			return ThemeService.getAll();
+		}
+
 		$stateProvider.state(themeDetailState);
+		$stateProvider.state(themeCreateState);
+		$stateProvider.state(themeListState);
 	}
 })();

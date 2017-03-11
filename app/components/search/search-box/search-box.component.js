@@ -24,8 +24,9 @@
 		self.search = search;
 		self.onSelectedItemChanged = onSelectedItemChanged;
 		self.goToWordDetail = StateService.goToWordDetail;
-		self.goToThemeDetail = StateService.goToThemeDetail;
 		self.goToWordCreate = StateService.goToWordCreate;
+		self.goToThemeDetail = StateService.goToThemeDetail;
+		self.goToThemeCreate = StateService.goToThemeCreate;
 		self.translate = translate;
 
 		function onInit() {
