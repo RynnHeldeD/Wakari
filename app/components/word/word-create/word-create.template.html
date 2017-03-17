@@ -1,69 +1,49 @@
-<md-subheader>Traductions</md-subheader>
-<md-list>
-	<md-list-item class="md-2-line">
+<md-content layout="column" layout-fill layout-padding>
+	<md-subheader>Traductions</md-subheader>
+
+	<md-input-container>
+		<label>Français</label>
 		<md-icon md-svg-src="dist/assets/icons/flags/fr.svg"></md-icon>
-		<div class="md-list-item-text" layout="column">
-			<md-input-container>
-				<label>Français</label>
-				<input ng-model="$ctrl.word.meaning">
-			</md-input-container>
-		</div>
-	</md-list-item>
-	<md-list-item class="md-2-line">
+		<input ng-model="$ctrl.word.meaning">
+	</md-input-container>
+
+	<md-input-container>
+		<label>Romaji</label>
 		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
-		<div class="md-list-item-text" layout="column">
-			<md-input-container>
-				<label>Romaji</label>
-				<input ng-model="$ctrl.word.romaji">
-			</md-input-container>
-		</div>
-	</md-list-item>
-	<md-list-item class="md-2-line">
+		<input ng-model="$ctrl.word.romaji">
+	</md-input-container>
+
+	<md-input-container>
+		<label>Kana</label>
 		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
-		<div class="md-list-item-text" layout="column">
-			<md-input-container>
-				<label>Kana</label>
-				<input ng-model="$ctrl.word.kana">
-			</md-input-container>
-		</div>
-	</md-list-item>
-	<md-list-item class="md-2-line">
+		<input ng-model="$ctrl.word.kana">
+	</md-input-container>
+
+	<md-input-container>
+		<label>Kanji</label>
 		<md-icon md-svg-src="dist/assets/icons/flags/jp.svg"></md-icon>
-		<div class="md-list-item-text" layout="column">
-			<md-input-container>
-				<label>Kanji</label>
-				<input ng-model="$ctrl.word.kanji">
-			</md-input-container>
-		</div>
-	</md-list-item>
-</md-list>
-<md-subheader>Informations</md-subheader>
-<md-list>
-	<md-list-item class="md-2-line md-long-text">
+		<input ng-model="$ctrl.word.kanji">
+	</md-input-container>
+
+	<md-subheader>Informations</md-subheader>
+
+	<md-input-container>
+		<label>Notes</label>
 		<md-icon md-svg-src="dist/assets/icons/av/note.svg"></md-icon>
-		<div class="md-list-item-text" layout="column">
-			<md-input-container>
-				<label>Notes</label>
-				<textarea ng-model="$ctrl.word.notes"></textarea>
-			</md-input-container>
-		</div>
-	</md-list-item>
-</md-list>
-<md-subheader>Thèmes</md-subheader>
-<md-list>
-	<md-list-item class="md-2-line">
-		<div class="md-list-item-text md-offset" layout="column">
-			<md-chips ng-model="$ctrl.word.themes"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
-				<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" md-min-length="0" placeholder="Search for a theme">
-					<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
-				</md-autocomplete>
-				<md-chip-template>
-					<span><a ui-sref="theme-detail({themeId: theme.id})">{{$chip.name}}</a></span>
-				</md-chip-template>
-			</md-chips>
-		</div>
-	</md-list-item>
-</md-list>
+		<textarea ng-model="$ctrl.word.notes"></textarea>
+	</md-input-container>
+
+	<md-subheader>Thèmes</md-subheader>
+
+	<md-chips ng-model="$ctrl.word.themes"  md-transform-chip="$ctrl.createChip($chip)" md-require-match="true" md-autocomplete-snap>
+		<md-autocomplete md-selected-item="$ctrl.selectedItem" md-search-text="$ctrl.searchText" md-items="theme in $ctrl.searchTheme($ctrl.searchText)" md-item-text="theme.name" md-min-length="0" placeholder="Search for a theme">
+			<span md-highlight-text="$ctrl.searchText">{{theme.name}}</span>
+		</md-autocomplete>
+		<md-chip-template>
+			<span><a ui-sref="theme-detail({themeId: theme.id})">{{$chip.name}}</a></span>
+		</md-chip-template>
+	</md-chips>
+</md-content>
 
 <md-button class="md-fab md-fab-bottom-right" aria-label="Create word" ng-click="$ctrl.create()">
 	<md-icon md-svg-src="dist/assets/icons/navigation/check.svg"></md-icon>

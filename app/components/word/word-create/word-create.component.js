@@ -8,9 +8,9 @@
 			controller: WordCreateController
 		});
 
-	WordCreateController.$inject = ['WordService', 'ThemeService', 'StateService'];
+	WordCreateController.$inject = ['WordService', 'ThemeService', 'StateService', '$mdToast'];
 
-	function WordCreateController(WordService, ThemeService, StateService) {
+	function WordCreateController(WordService, ThemeService, StateService, $mdToast) {
 		var self = this;
 
 		self.word = null;
@@ -26,14 +26,7 @@
 		self.searchTheme = searchTheme;
 		
 		function onInit() {
-			self.word = {
-				kana: '',
-				kanji: '',
-				romaji: '',
-				meaning: '',
-				notes: '',
-				themes: []
-			};
+			initWord();
 
 			ThemeService.getAll().then(function(response) {
 				self.themes = response.data;
@@ -43,10 +36,23 @@
 		function create() {
 			WordService.create(self.word).then(function(response) {
 				if (!response.error) {
-					StateService.goToWordDetail(response.data.id);
+					initWord();
+					$mdToast.show($mdToast.simple().textContent('Mot #' + response.data.id + ' créé ! (' + response.data.meaning + ')').position('top right'));
+					//StateService.goToWordDetail(response.data.id);
 				}
 			});
 		};
+
+		function initWord() {
+			self.word = {
+				kana: '',
+				kanji: '',
+				romaji: '',
+				meaning: '',
+				notes: '',
+				themes: []
+			};
+		}
 
 		function createChip(chip) {
 			if (angular.isObject(chip)) {
