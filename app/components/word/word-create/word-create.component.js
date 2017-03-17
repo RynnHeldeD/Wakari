@@ -37,10 +37,19 @@
 			WordService.create(self.word).then(function(response) {
 				if (!response.error) {
 					initWord();
-					$mdToast.show($mdToast.simple().textContent('Mot #' + response.data.id + ' créé ! (' + response.data.meaning + ')').position('top right'));
-					//StateService.goToWordDetail(response.data.id);
+					$mdToast.show($mdToast
+						.simple()
+						.textContent('Mot #' + response.data.id + ' créé ! (' + response.data.meaning + ')')
+						.position('top right')
+						.action('Go')
+					).then(function(toastResponse) {
+						if (toastResponse === 'ok') {
+							StateService.goToWordDetail(response.data.id);
+						}
+					});
 				}
 			});
+			
 		};
 
 		function initWord() {
