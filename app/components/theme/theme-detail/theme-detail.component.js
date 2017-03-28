@@ -12,14 +12,15 @@
 			}
 		});
 	
-	ThemeDetailController.$inject = ['WordService'];
+	ThemeDetailController.$inject = ['WordService', 'StateService'];
 
-	function ThemeDetailController(WordService) {
+	function ThemeDetailController(WordService, StateService) {
 		var self = this;
 		self.theme = null;
 		self.words = null;
 
 		self.$onInit = onInit;
+		self.goToWordDetail = StateService.goToWordDetail;
 		
 		function onInit() {
 			self.theme = self.themeData.data;

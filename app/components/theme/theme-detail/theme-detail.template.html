@@ -1,8 +1,9 @@
-<md-content>
+<md-content layout="column">
 	<md-subheader class="md-primary">{{$ctrl.theme.name | capitalize}}</md-subheader>
 	<md-list>
-		<md-list-item ng-repeat="word in $ctrl.words">
-			<p>{{word.meaning}}</p>
+		<md-list-item ng-repeat="word in $ctrl.words" ng-click="$ctrl.goToWordDetail(word.id)">
+			<md-icon md-svg-src="dist/assets/icons/action/description.svg"></md-icon>
+			<p class="md-truncate">{{word.meaning}}</p>
 		</md-list-item>
 	</md-list>
 </md-content>
